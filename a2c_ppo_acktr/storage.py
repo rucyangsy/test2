@@ -140,8 +140,8 @@ class RolloutStorage(object):
         # avoid zero images
         while True:
             indice = np.random.choice(self.buffer_size, 1, replace=False)
-            if self.buffer_obs[indice][:, -1:].sum() !=0 :
-                return get_simclr_pipeline_transform(resized_size)(self.buffer_obs[indice][:, -1:]), get_simclr_pipeline_transform(resized_size)(self.buffer_obs[indice][:, -1:])
+            if self.buffer_obs[indice[0]][:, -1:].sum() !=0 :
+                return get_simclr_pipeline_transform(resized_size)(self.buffer_obs[indice[0]][:, -1:]), get_simclr_pipeline_transform(resized_size)(self.buffer_obs[indice[0]][:, -1:])
 
     def feed_forward_generator(self,
                                advantages,
